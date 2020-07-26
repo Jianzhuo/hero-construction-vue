@@ -32,7 +32,7 @@
               ></el-image>
               <!-- Main menu -->
               <!-- menu button -->
-              <i @click="menuIconclick = !menuIconclick" class="fa fa-list menuIcon"></i>
+              <i @click="menuIconclick = !menuIconclick; menuList = !menuList; menuTimes = !menuTimes" class="fa menuIcon" v-bind:class="{'fa-list':menuList, 'fa-times':menuTimes}"></i>
             </div>
           </el-col>
           <el-col :span="4" :xs="2">
@@ -44,7 +44,7 @@
         <transition name="el-zoom-in-top">
           <div
             v-show="menuIconclick"
-            style="position: absolute; padding-top: 90.7px; top: 0; width: 100%; background-color: #b08008; z-index: -1"
+            style="position: absolute; padding-top: 90.7px; top: 0; width: 100%; background-color: #b08008; z-index: -1; height:100vh"
           >
             <el-menu background-color="#b08008" text-color="#fff">
               <el-menu-item index="1">
@@ -133,6 +133,8 @@
 export default {
   name: "App",
   data: () => ({
+    menuList: true,
+    menuTimes: false,
     menuIconclick: false
   }),
   mounted() {
@@ -153,6 +155,7 @@ export default {
 <style>
 .headerMain-bg {
   background: #fff;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.49);
 }
 
 body {
@@ -210,5 +213,20 @@ footer {
 .el-divider--horizontal {
   margin: 0;
   margin-bottom: 10px;
+}
+.m-b-150{
+  margin-bottom:150px !important;
+}
+.p-tb-50{
+  padding-top:50px;
+  padding-bottom:50px;
+}
+.page-button{
+  padding: 0.6em 2em;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 10px;
+  color: rgb(255, 255, 255);
 }
 </style>

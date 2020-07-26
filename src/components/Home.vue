@@ -12,9 +12,7 @@
             style="padding: 1em;"
           >Delivering Modern Comfort And Enjoyment To Residential And Commercial Spaces</p>
           <!-- button -->
-          <span
-            style="background-color: #851719; padding: .8em; border-radius: 10px 10px 0 10px;"
-          >Get A Quote</span>
+          <span class="page-button" style="background-color: #851719">Get A Quote</span>
         </div>
         <!-- button to scroll page to setted anchor -->
         <i class="el-icon-arrow-down angleDownicon" aria-hidden="true"></i>
@@ -52,9 +50,7 @@
           </el-col>
         </el-row>
         <!-- button -->
-        <span
-          style="background-color: #851719; padding: .8em; border-radius: 10px 10px 0 10px; color: white; font-size: .8em;"
-        >More Details</span>
+        <span class="page-button" style="background-color: #851719">More Details</span>
       </div>
 
       <!-- Our services part -->
