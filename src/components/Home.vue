@@ -21,12 +21,12 @@
       <!-- why choose us section -->
       <div id="whyChooseus">
         <!-- title -->
-        <div style="padding-top: 3em; font-size: 1.5em; font-weight: 600">
+        <div class="whyChooseus-box oTitle">
           <span style="color: #851719">WHY</span>
           <span style="color: #b08008">CHOOSE US</span>
         </div>
         <!-- content -->
-        <el-row>
+        <el-row class="whyChooseus-row">
           <el-col :span="8">
             <div class="grid-content wContent">
               <i class="fa fa-star" aria-hidden="true"></i>
@@ -56,7 +56,7 @@
       <!-- Our services part -->
       <div id="ourServices">
         <!-- title -->
-        <div style="padding-top: 2em; font-size: 1.5em; font-weight: 600">
+        <div class="oTitle">
           <span style="color: white">OUR</span>
           <span style="color: #b08008">SERVICES</span>
         </div>
@@ -65,7 +65,7 @@
           style="margin-top: 2em; margin-bottom: 2em;"
         >Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore</p>
         <!-- content -->
-        <el-row>
+        <el-row class="ourServices-row">
           <el-col :span="8">
             <div class="grid-content oContent">
               <el-avatar
@@ -103,12 +103,16 @@
       <!-- Our partners part -->
       <div id="ourPartners">
         <!-- title -->
-        <div style="padding-top: 3em; font-size: 1.5em; font-weight: 600">
+        <div class="oTitle">
           <span style="color: white">OUR</span>
           <span style="color: #b08008">PARTNERS</span>
         </div>
         <!-- partners logo board -->
-        <el-image style="width: 80%; height: auto; padding-top: 3em;" :src="require('../assets/images/home-partner-logo.png')" :fit="fit"></el-image>
+        <el-image
+          class="ourPartners-img"
+          :src="require('../assets/images/home-partner-logo.png')"
+          :fit="fit"
+        ></el-image>
       </div>
     </el-main>
   </div>
@@ -119,18 +123,18 @@ export default {
   name: "Home",
   data() {
     return {};
-  }
+  },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 #homeBanner {
-  background-image: url("../assets/images/home-banner.jpg");
+  background-image: url(/static/img/home-banner.3a78d3c.jpg);
   background-size: cover;
-  background-position: center;
-  padding-top: 16em;
-  padding-bottom: 8em;
+  background-position: top;
+  height: 100vh;
+  position: relative;
 }
 
 #homeBannercontent {
@@ -139,7 +143,16 @@ export default {
   color: white;
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 25px;
-  padding-bottom: 2em;
+  padding: 2em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}
+
+#homeBannercontent p {
+  font-size: 25px;
 }
 
 .angleDownicon {
@@ -149,44 +162,65 @@ export default {
   padding: 3px;
   border: white solid 1px;
   margin-top: 4.5em;
+  position: absolute;
+  bottom: 50px;
 }
 
 #whyChooseus {
-  background-image: url("../assets/images/home-about-bg.jpg");
+  background-image: url(/static/img/home-about-bg.c3ac722.jpg);
   background-size: cover;
-  background-position: center;
-  padding-left: 5%;
-  padding-right: 5%;
-  padding-bottom: 2.3em;
+  background-position: top;
+  padding: 2em 2em 6em;
+}
+
+.whyChooseus-box {
+  padding-top: 3em;
+  font-size: 1.5em;
+  font-weight: 600;
+}
+
+.whyChooseus-row {
+  width: 70%;
+  margin: 40px auto;
 }
 
 .wContent {
   border: #851719 solid 1px;
   text-align: start;
-  padding: 2em;
   margin: 2em;
+  padding: 40px;
+  background-color: rgba(255, 255, 255, 0.6);
 }
 
 .wContent i {
-  font-size: 1.5em;
+  font-size: 35px;
   color: #b08008;
+  vertical-align: middle;
 }
 
 .wContent span {
   color: #851719;
   font-weight: 700;
-  font-size: 0.9em;
+  vertical-align: middle;
+  font-size: 20px;
+  margin-left: 5px;
 }
 
 .wContent p {
-  margin-left: 2.5em;
-  font-size: 0.8em;
+  margin-left: 50px;
+  margin-top: 5px;
+  font-size: 18px;
 }
 
 #ourServices {
   background-color: #851719;
   color: white;
-  padding-bottom: 3em;
+  padding: 3em 3em 5em;
+}
+
+.ourServices-row {
+  width: 70%;
+  margin: 60px auto 40px;
 }
 
 #ourServices p {
@@ -203,17 +237,24 @@ export default {
 }
 
 .oContent span {
-  font-size: 0.9em;
+  font-size: 20px;
   font-weight: 700;
 }
 
 .oContent p {
-  font-size: 0.8em;
+  font-size: 16px;
   padding-top: 1em;
 }
 
 #ourPartners {
-  background-image: url("../assets/images/home-partner-bg.jpg");
-  padding-bottom: 10em;
+  background-image: url(/static/img/home-partner-bg.b44bf25.jpg);
+  padding-bottom: 15em;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.ourPartners-img {
+  width: 60%;
+  height: auto;
+  padding-top: 3em;
 }
 </style>

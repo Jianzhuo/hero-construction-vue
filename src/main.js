@@ -9,10 +9,13 @@ import 'element-ui/lib/theme-chalk/index.css';
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import VueAgile from 'vue-agile'
+ 
 Vue.use(ElementUI);
 Vue.config.productionTip = false
-Vue.use(BootstrapVue)
+Vue.use(BootstrapVue)   
 Vue.use(IconsPlugin)
+Vue.use(VueAgile)
 
 /* eslint-disable no-new */
 new Vue({
@@ -21,3 +24,9 @@ new Vue({
   components: { App },
   template: '<App/>'
 })
+
+var Isotope = require('isotope-layout');
+
+var iso = new Isotope( '.grid', {
+  // options...
+});

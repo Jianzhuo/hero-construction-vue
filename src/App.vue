@@ -1,6 +1,10 @@
 <template>
   <div id="app">
     <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
       integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
@@ -13,12 +17,8 @@
       Header part of all webpages for this project
       with logo and menu 
       -->
-      <el-header
-        id="pageHeader"
-        height="auto"
-        style="padding:0;"
-      >
-        <el-row style="padding-top: 1em">
+      <el-header id="pageHeader" height="auto" style="padding:0;">
+        <el-row>
           <el-col :span="4" :xs="2">
             <div class="grid-content"></div>
           </el-col>
@@ -26,13 +26,17 @@
             <div class="grid-content">
               <!-- Logo -->
               <el-image
-                style="width: 10em; padding: 10px; height: auto;"
+                class="header-logo"
                 :src="require('./assets/images/hero_logo.png')"
                 fit="conatin"
               ></el-image>
               <!-- Main menu -->
               <!-- menu button -->
-              <i @click="menuIconclick = !menuIconclick; menuList = !menuList; menuTimes = !menuTimes" class="fa menuIcon" v-bind:class="{'fa-list':menuList, 'fa-times':menuTimes}"></i>
+              <i
+                @click="menuIconclick = !menuIconclick; menuList = !menuList; menuTimes = !menuTimes"
+                class="fa menuIcon"
+                v-bind:class="{'fa-bars':menuList, 'fa-times':menuTimes}"
+              ></i>
             </div>
           </el-col>
           <el-col :span="4" :xs="2">
@@ -44,7 +48,7 @@
         <transition name="el-zoom-in-top">
           <div
             v-show="menuIconclick"
-            style="position: absolute; padding-top: 90.7px; top: 0; width: 100%; background-color: #b08008; z-index: -1; height:100vh"
+            style="position: absolute; top: 0; width: 100%; background-color: #b08008; z-index: -1; height:100vh"
           >
             <el-menu background-color="#b08008" text-color="#fff">
               <el-menu-item index="1">
@@ -73,15 +77,13 @@
         </transition>
       </el-header>
 
-      <router-view/>
+      <router-view />
 
-      
-
-      <el-footer style="padding: 0;">
+      <el-footer>
         <!-- the top parrt of the footer  -->
         <div class="footerTop"></div>
         <!-- the main parrt of the footer -->
-        <div style="background: #b08008; padding-top: 30px">
+        <div style="background: #b08008; padding-top: 30px; font-size:16px">
           <el-row>
             <el-col :span="3">
               <div class="grid-content"></div>
@@ -135,11 +137,11 @@ export default {
   data: () => ({
     menuList: true,
     menuTimes: false,
-    menuIconclick: false
+    menuIconclick: false,
   }),
   mounted() {
     this.$nextTick(() => {
-      window.onscroll = function() {
+      window.onscroll = function () {
         var headerMain = document.getElementById("pageHeader");
         if (window.pageYOffset >= 70) {
           headerMain.classList.add("headerMain-bg");
@@ -148,7 +150,7 @@ export default {
         }
       };
     });
-  }
+  },
 };
 </script>
 
@@ -157,13 +159,19 @@ export default {
   background: #fff;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.49);
 }
+.header-logo {
+  width: 20%;
+  padding: 20px;
+  height: auto;
+}
 
 body {
   margin: 0;
+  font-family: "Open Sans", sans-serif;
 }
 
 #app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-family: "Open Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -171,9 +179,9 @@ body {
 }
 
 .menuIcon {
-  font-size: 1.7em;
+  font-size: 35px;
   color: #851719;
-  padding-top: 1em;
+  padding-top: 1.4em;
   float: right;
 }
 
@@ -188,10 +196,29 @@ header {
   z-index: 1;
 }
 
+.el-menu{
+  top: 15vh;
+}
+
+.el-menu-item:focus, .el-menu-item:hover{
+  background-color: rgb(176, 128, 8) !important;
+}
+.el-menu-item *{
+  transition: 0.4s;
+}
+
+.el-menu-item:focus span, .el-menu-item:hover span{
+  color: #851719;
+}
+.el-menu-item{
+  font-size: 25px;
+  font-weight: 800;
+}
+
 footer {
   color: white;
-  font-size: 0.7em; 
-  position: relative; 
+  font-size: 0.7em;
+  position: relative;
   bottom: 12em;
 }
 
@@ -214,19 +241,30 @@ footer {
   margin: 0;
   margin-bottom: 10px;
 }
-.m-b-150{
-  margin-bottom:150px !important;
+.m-b-150 {
+  margin-bottom: 150px !important;
 }
-.p-tb-50{
-  padding-top:50px;
-  padding-bottom:50px;
+.p-tb-50 {
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
-.page-button{
+.page-button {
   padding: 0.6em 2em;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 0px;
   border-bottom-left-radius: 10px;
   color: rgb(255, 255, 255);
+  border:none;
+}
+.el-footer{
+  padding: 0;
+  margin-bottom:-5em;
+}
+
+.oTitle {
+  padding-top: 2em;
+  font-size: 28px;
+  font-weight: 800;
 }
 </style>

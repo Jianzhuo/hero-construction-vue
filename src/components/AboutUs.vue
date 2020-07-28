@@ -5,7 +5,7 @@
       <h1>Delivering modern comfort and enjoyment to residential and commercial spaces</h1>
     </div>
     <div class="about-content p-tb-50">
-        <div style="font-size: 1.5em; font-weight: 600">
+        <div class="oTitle">
           <span style="color: #851719">ABOUT</span>
           <span style="color: #b08008">HERO INTERNATIONAL</span>
         </div>
@@ -19,7 +19,7 @@
     </div>
     <div class="the-director p-tb-50">
       <div class="the-director-content">
-        <div style="font-size: 1.5em; font-weight: 600">
+        <div class="oTitle">
           <span style="color: #851719">THE</span>
           <span style="color: #b08008">DIRECTOR</span>
         </div>
@@ -38,7 +38,7 @@
       </div>
     </div>
     <div class="team-builder m-b-150">
-        <div style="padding-top: 3em; font-size: 1.5em; font-weight: 600">
+        <div class="oTitle">
           <span style="color: #851719">OUR</span>
           <span style="color: #b08008">TEAM BUILDER</span>
         </div>
@@ -77,6 +77,7 @@ export default {
   transform: translate(-50%, -50%);
   color:white;
   text-transform: uppercase;
+  font-weight: 800;
 }
 .about-content, .the-director-content, .team-builder{
   width:70%;
@@ -84,6 +85,8 @@ export default {
 }
 .about-content p{
   text-align: justify;
+  font-size:16px;
+  margin-top:25px;
 }
 .the-director{
   background-color: #E2E2E2;
@@ -98,6 +101,8 @@ export default {
 }
 .director-left p{
   padding-right: 20px;
+  font-size:16px;
+  margin-top:25px;
 }
 .director-right{
   width:35%;
@@ -107,7 +112,11 @@ export default {
 .director-right img{
   width:100%;
 }
+.team-builder p{
+  font-size:16px;
+  margin:25px auto;
+}
 .team-builder img{
-  width:100%;
+  width:80%;
 }
 </style>
