@@ -41,20 +41,38 @@
       </div>
       <div class="contact-form">
         <div>
-          <b-form @submit="onSubmit" @reset="onReset" v-if="show">
+          <b-form @submit="onSubmit" v-if="show">
             <b-form-group id="input-group-1" label-for="input-1">
               <b-form-input id="input-1" v-model="form.name" required placeholder="Name"></b-form-input>
             </b-form-group>
             <b-form-group id="input-group-2" label-for="input-2">
-              <b-form-input id="input-2" v-model="form.email" type="email" required placeholder="Email Address"></b-form-input>
+              <b-form-input
+                id="input-2"
+                v-model="form.email"
+                type="email"
+                required
+                placeholder="Email Address"
+              ></b-form-input>
             </b-form-group>
             <b-form-group id="input-group-3" label-for="input-3">
-              <b-form-input id="input-3" v-model="form.contact" required placeholder="Contact Number"></b-form-input>
+              <b-form-input
+                id="input-3"
+                v-model="form.contact"
+                required
+                placeholder="Contact Number"
+              ></b-form-input>
             </b-form-group>
             <b-form-group id="input-group-4" label-for="input-4">
               <b-form-input id="input-4" v-model="form.subject" required placeholder="Subject"></b-form-input>
             </b-form-group>
-            <b-form-textarea id="input-5" placeholder="Message" rows="8" v-model="form.message"  max-rows="15" required></b-form-textarea>
+            <b-form-textarea
+              id="input-5"
+              placeholder="Message"
+              rows="8"
+              v-model="form.message"
+              max-rows="15"
+              required
+            ></b-form-textarea>
             <b-button type="submit" class="page-button" style="background-color: #851719">Submit</b-button>
           </b-form>
         </div>
@@ -73,17 +91,17 @@ export default {
         email: "",
         contact: "",
         subject: "",
-        nessage: [],
+        nessage: []
       },
-      show: true,
+      show: true
     };
   },
   methods: {
     onSubmit(evt) {
       evt.preventDefault();
       alert(JSON.stringify(this.form));
-    },
-  },
+    }
+  }
 };
 </script>
 <style scoped>
@@ -147,7 +165,7 @@ export default {
   margin-top: 20px;
   margin-bottom: 9em;
 }
-.page-button{
-    margin-top:15px
+.page-button {
+  margin-top: 15px;
 }
 </style>

@@ -111,7 +111,6 @@
         <el-image
           class="ourPartners-img"
           :src="require('../assets/images/home-partner-logo.png')"
-          :fit="fit"
         ></el-image>
       </div>
     </el-main>
@@ -130,7 +129,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 #homeBanner {
-  background-image: url(/static/img/home-banner.3a78d3c.jpg);
+  background-image: url(../assets/images/home-banner.jpg);
   background-size: cover;
   background-position: top;
   height: 100vh;
@@ -167,7 +166,7 @@ export default {
 }
 
 #whyChooseus {
-  background-image: url(/static/img/home-about-bg.c3ac722.jpg);
+  background-image: url(../assets/images/home-about-bg.jpg);
   background-size: cover;
   background-position: top;
   padding: 2em 2em 6em;
@@ -247,7 +246,7 @@ export default {
 }
 
 #ourPartners {
-  background-image: url(/static/img/home-partner-bg.b44bf25.jpg);
+  background-image: url(../assets/images/home-partner-bg.jpg);
   padding-bottom: 15em;
   background-size: cover;
   background-repeat: no-repeat;

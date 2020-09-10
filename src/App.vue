@@ -18,7 +18,10 @@
       with logo and menu 
       -->
       <el-header id="pageHeader" height="auto" style="padding:0;">
-        <el-row>
+        <el-row
+          style="z-index: 2"
+          v-bind:class="{'head-bg-enter':menuList,'head-bg-leave':menuTimes}"
+        >
           <el-col :span="4" :xs="2">
             <div class="grid-content"></div>
           </el-col>
@@ -45,31 +48,37 @@
         </el-row>
 
         <!-- menu content -->
-        <transition name="el-zoom-in-top">
+        <transition name="slide-fade">
           <div
-            v-show="menuIconclick"
-            style="position: absolute; top: 0; width: 100%; background-color: #b08008; z-index: -1; height:100vh"
+            v-if="menuIconclick"
+            style="position: absolute; top: 104px; width: 100%; background-color: #b08008; z-index: -1; height:90vh"
           >
-            <el-menu background-color="#b08008" text-color="#fff">
-              <el-menu-item index="1">
+            <el-menu
+              @select="menuIconclick = false; menuList = true; menuTimes = false"
+              :router="true"
+              :default-active="$route.path"
+              background-color="#b08008"
+              text-color="#fff"
+            >
+              <el-menu-item index="/">
                 <span slot="title">HOME</span>
               </el-menu-item>
-              <el-menu-item index="2">
+              <el-menu-item index="/AboutUs">
                 <span slot="title">ABOUT US</span>
               </el-menu-item>
-              <el-menu-item index="3">
+              <el-menu-item index="/OurServices">
                 <span slot="title">OUR SERVICES</span>
               </el-menu-item>
-              <el-menu-item index="4">
+              <el-menu-item index="/Projects">
                 <span slot="title">PROJECTS</span>
               </el-menu-item>
-              <el-menu-item index="5">
+              <el-menu-item index="/Awards">
                 <span slot="title">AWARDS</span>
               </el-menu-item>
-              <el-menu-item index="6">
+              <el-menu-item index="/OurPartners">
                 <span slot="title">OUR PARTNERS</span>
               </el-menu-item>
-              <el-menu-item index="7">
+              <el-menu-item index="/ContactUs">
                 <span slot="title">CONTACT US</span>
               </el-menu-item>
             </el-menu>
@@ -77,7 +86,9 @@
         </transition>
       </el-header>
 
-      <router-view />
+      <div style="min-height: 1000px;" >
+        <router-view />
+      </div>
 
       <el-footer>
         <!-- the top parrt of the footer  -->
@@ -125,6 +136,7 @@
               <div class="grid-content"></div>
             </el-col>
           </el-row>
+          <br />
         </div>
       </el-footer>
     </el-container>
@@ -137,30 +149,52 @@ export default {
   data: () => ({
     menuList: true,
     menuTimes: false,
-    menuIconclick: false,
+    menuIconclick: false
   }),
   mounted() {
     this.$nextTick(() => {
-      window.onscroll = function () {
+      window.onscroll = function() {
         var headerMain = document.getElementById("pageHeader");
-        if (window.pageYOffset >= 70) {
+        if (window.pageYOffset >= 10) {
           headerMain.classList.add("headerMain-bg");
         } else {
           headerMain.classList.remove("headerMain-bg");
         }
       };
     });
-  },
+  }
 };
 </script>
 
 <style>
+.slide-fade-enter-active {
+  transition: all 0.4s ease-in;
+}
+.slide-fade-leave-active {
+  transition: all 0.4s ease-in;
+}
+.slide-fade-enter, .slide-fade-leave-to
+/* .slide-fade-leave-active for below version 2.1.8 */ {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+.head-bg-leave {
+  transition: background-color 0.4s;
+  background-color: white;
+}
+
+.head-bg-enter {
+  transition: background-color 1s ease-in;
+  background-color: transparent;
+}
+
 .headerMain-bg {
   background: #fff;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.49);
 }
 .header-logo {
-  width: 20%;
+  width: 14em;
   padding: 20px;
   height: auto;
 }
@@ -179,10 +213,11 @@ body {
 }
 
 .menuIcon {
-  font-size: 35px;
+  font-size: 2em;
   color: #851719;
-  padding-top: 1.4em;
-  float: right;
+  position: absolute;
+  top: 50%;
+  left: 80%;
 }
 
 .grid-content {
@@ -196,35 +231,45 @@ header {
   z-index: 1;
 }
 
-.el-menu{
+.el-menu {
   top: 15vh;
 }
 
-.el-menu-item:focus, .el-menu-item:hover{
+.el-menu-item:focus,
+.el-menu-item:hover {
   background-color: rgb(176, 128, 8) !important;
 }
-.el-menu-item *{
+.el-menu-item * {
   transition: 0.4s;
 }
 
-.el-menu-item:focus span, .el-menu-item:hover span{
+.el-menu-item:focus span,
+.el-menu-item:hover span {
   color: #851719;
 }
-.el-menu-item{
+.el-menu-item {
   font-size: 25px;
   font-weight: 800;
+}
+
+.el-menu-item.is-active {
+  color: #851719;
+}
+
+.el-menu {
+  top: 3em;
 }
 
 footer {
   color: white;
   font-size: 0.7em;
   position: relative;
-  bottom: 12em;
+  bottom: 17em;
 }
 
 .footerTop {
-  -webkit-clip-path: polygon(0 0, 50% 50%, 100% 0, 100% 100%, 0 100%);
-  clip-path: polygon(0 0, 50% 99%, 100% 0, 100% 100%, 0 100%);
+  -webkit-clip-path: polygon(0 0, 50% 50%, 100% 0, 100% 102%, 0 102%);
+  clip-path: polygon(0 0, 50% 99%, 100% 0, 100% 102%, 0 102%);
   width: 100%;
   height: 100px;
   background: #b08008;
@@ -255,16 +300,35 @@ footer {
   border-bottom-right-radius: 0px;
   border-bottom-left-radius: 10px;
   color: rgb(255, 255, 255);
-  border:none;
+  border: none;
 }
-.el-footer{
+.el-footer {
   padding: 0;
-  margin-bottom:-5em;
+  margin-bottom: -5em;
 }
 
 .oTitle {
   padding-top: 2em;
   font-size: 28px;
   font-weight: 800;
+}
+
+.tTitle {
+  padding-bottom: 2em;
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.carousel-slide {
+  border: none !important;
+}
+
+.project-carousel .carousel-slide {
+  padding-top: 5px;
+  padding-right: 5px;
+}
+
+.carousel-item {
+  display: block;
 }
 </style>

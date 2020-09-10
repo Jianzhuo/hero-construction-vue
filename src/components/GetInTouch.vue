@@ -35,7 +35,7 @@ export default {
   background-size: 20%;
   background-position: 80% 20%;
   background-repeat: no-repeat;
-  padding: 50px 0 170px;
+  padding: 50px 0 230px;
 }
 .get-in-touch p {
   color: #fff;

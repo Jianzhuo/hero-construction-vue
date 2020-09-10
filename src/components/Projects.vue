@@ -18,6 +18,7 @@
           class="button"
           :class="[key===filterOption? 'is-checked' : '']"
           @click="filter(key)"
+          :key="key"
         >{{key}}</button>
       </div>
 
@@ -31,15 +32,16 @@
         @sort="sortOption=arguments[0]"
         @layout="currentLayout=arguments[0]"
       >
-        <div v-for="element,index in list" :class="[element.category]" :key="index">、
-          <div class="book-image">
-            <img src="imagesrc">
-          </div>
-          <img class="imagesrc">{{element.imagesrc}}">
-          <h3 class="name">{{element.name}}</h3>
-          <p class="date">{{element.date}}</p>
-          <p class="number">{{element.number}}</p>
-          <p class="weight">{{element.weight}}</p>
+        <div v-for="(element, index) in list" :class="[element.projectCate]" :key="index">
+          <router-link :to="{name:'ProjectDetails', query: {id:element.id}}">
+            <b-card overlay :img-src="element.imgUrl" img-alt="Card Image" style="color: #851719;">
+              <b-card-text>
+                <p>{{element.projectName}}</p>
+                <p>{{element.projectCompleted}}</p>
+                <p>View Story</p>
+              </b-card-text>
+            </b-card>
+          </router-link>
         </div>
       </isotope>
     </div>
@@ -55,43 +57,12 @@ export default {
   name: "Projects",
   components: {
     GetInTouch,
-    isotope,
+    isotope
   },
   data() {
     return {
       layouts: ["masonry"],
-      list: [
-        {
-          name: "1",
-          date: "112",
-          category: "Residential",
-          imagesrc: "https://images-na.ssl-images-amazon.com/images/I/61StaeTZcsL._SX381_BO1,204,203,200_.jpg"
-        },
-        {
-          name: "2",
-          date: "123",
-          category: "Residential",
-          imagesrc: "https://images-na.ssl-images-amazon.com/images/I/61StaeTZcsL._SX381_BO1,204,203,200_.jpg"
-        },
-        {
-          name: "3",
-          date: "112",
-          category: "Commercial",
-          imagesrc: "https://images-na.ssl-images-amazon.com/images/I/61StaeTZcsL._SX381_BO1,204,203,200_.jpg"
-        },
-        {
-          name: "4",
-          date: "112",
-          category: "Residential",
-          imagesrc: "https://images-na.ssl-images-amazon.com/images/I/61StaeTZcsL._SX381_BO1,204,203,200_.jpg"
-        },
-        {
-          name: "5",
-          date: "112",
-          category: "Commercial",
-          imagesrc: "https://images-na.ssl-images-amazon.com/images/I/61StaeTZcsL._SX381_BO1,204,203,200_.jpg"
-        },
-      ],
+      list: [],
       currentLayout: "masonry",
       selected: null,
       sortOption: "original-order",
@@ -99,30 +70,45 @@ export default {
       option: {
         itemSelector: ".element-item",
         getFilterData: {
-          All: function () {
+          All: function() {
             return true;
           },
-          Residential: function (el) {
-            return el.category === "Residential";
+          Residential: function(el) {
+            return el.projectCate === "Residential";
           },
-          Commercial: function (el) {
-            return el.category === "Commercial";
-          },
-        },
-      },
+          Commercial: function(el) {
+            return el.projectCate === "Commercial";
+          }
+        }
+      }
     };
   },
   methods: {
-    sort: function (key) {
+    sort: function(key) {
       this.$refs.cpt.sort(key);
     },
-    filter: function (key) {
+    filter: function(key) {
       this.$refs.cpt.filter(key);
     },
-    changeLayout: function (key) {
+    changeLayout: function(key) {
       this.$refs.cpt.layout(key);
     },
+
+    getContent() {
+      this.$http({
+        url: this.$http.adornUrl("/constructionProject/get"),
+        method: "get",
+        params: this.$http.adornParams({
+          limit: 500
+        })
+      }).then(({ data }) => {
+        this.list = data;
+      });
+    }
   },
+  created() {
+    this.getContent();
+  }
 };
 </script>
 
@@ -199,9 +185,6 @@ export default {
   color: white;
 }
 
-.button:active {
-}
-
 /* ---- button-group ---- */
 
 .button-group {
@@ -219,7 +202,6 @@ export default {
   border-radius: 10px;
   text-shadow: none;
 }
-
 
 /* ---- isotope ---- */
 
@@ -244,48 +226,13 @@ export default {
 .element-item {
   position: relative;
   float: left;
-  width: 100px;
-  height: 100px;
+  width: 250px;
   margin: 5px;
   padding: 10px;
-  background: #888;
-  color: #262524;
 }
 
 .element-item > * {
   margin: 0;
   padding: 0;
-}
-
-.element-item .name {
-  position: absolute;
-  left: 10px;
-  top: 60px;
-  text-transform: none;
-  letter-spacing: 0;
-  font-size: 12px;
-  font-weight: normal;
-}
-
-.element-item .symbol {
-  position: absolute;
-  left: 10px;
-  top: 0px;
-  font-size: 42px;
-  font-weight: bold;
-  color: white;
-}
-
-.element-item .number {
-  position: absolute;
-  right: 8px;
-  top: 5px;
-}
-
-.element-item .weight {
-  position: absolute;
-  left: 10px;
-  top: 76px;
-  font-size: 12px;
 }
 </style>

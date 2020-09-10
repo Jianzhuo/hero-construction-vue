@@ -47,6 +47,7 @@
         </div>
       </div>
     </div>
+    
     <GetInTouch></GetInTouch>
   </div>
 </template>

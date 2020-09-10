@@ -25,7 +25,9 @@ import GetInTouch from "./GetInTouch";
 export default {
   name: "OurPartners",
   components: { GetInTouch },
-  data() {},
+  data() {
+    return{}
+  },
 };
 </script>
 <style scoped>
