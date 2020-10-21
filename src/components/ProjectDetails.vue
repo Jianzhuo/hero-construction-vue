@@ -340,10 +340,13 @@ export default {
   position: absolute;
   top: 50%;
   left: 50%;
+  -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   color: white;
   text-transform: uppercase;
   font-weight: 800;
+  font-size: 32px;
+  line-height: 46px;
 }
 .project-details-content {
   width: 70%;

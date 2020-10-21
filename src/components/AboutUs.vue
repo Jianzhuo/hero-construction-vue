@@ -78,6 +78,8 @@ export default {
   color:white;
   text-transform: uppercase;
   font-weight: 800;
+  font-size: 32px;
+  line-height: 46px;
 }
 .about-content, .the-director-content, .team-builder{
   width:70%;

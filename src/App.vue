@@ -308,9 +308,8 @@ footer {
 }
 
 .oTitle {
-  padding-top: 2em;
   font-size: 28px;
-  font-weight: 800;
+  font-weight: 800 !important;
 }
 
 .tTitle {

@@ -5,7 +5,7 @@
       <h1>Together We Build</h1>
     </div>
     <div class="service-content p-tb-50">
-      <div style="font-size: 1.5em; font-weight: 600">
+      <div style="font-size: 1.5em; font-weight: 800">
         <span style="color: #851719">OUR</span>
         <span style="color: #b08008">PROJECTS</span>
       </div>
@@ -126,10 +126,13 @@ export default {
   position: absolute;
   top: 50%;
   left: 50%;
+  -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   color: white;
   text-transform: uppercase;
   font-weight: 800;
+  font-size: 32px;
+  line-height: 46px;
 }
 
 #project-filter {
